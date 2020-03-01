@@ -143,11 +143,11 @@ The first step: plot the histogram as a starting point for determining where the
 Finally, usign the coordinates previously calculated, a second order polynomial is calculated for both the left and right lane line. 
 Fit a second order polynomial to each using `np.polyfit`
 
-`left_fit = np.polyfit(lefty, leftx, 2)
-right_fit = np.polyfit(righty, rightx, 2)
-ploty = np.linspace(0, binary_warped.shape[0]-1, binary_warped.shape[0] )
-left_fitx = left_fit[0]*ploty^2 + left_fit[1]*ploty + left_fit[2]
-right_fitx = right_fit[0]*ploty^2 + right_fit[1]*ploty + right_fit[2]`
+    `left_fit = np.polyfit(lefty, leftx, 2)
+     right_fit = np.polyfit(righty, rightx, 2)
+     ploty = np.linspace(0, binary_warped.shape[0]-1, binary_warped.shape[0] )
+     left_fitx = left_fit[0]*ploty^2 + left_fit[1]*ploty + left_fit[2]
+     right_fitx = right_fit[0]*ploty^2 + right_fit[1]*ploty + right_fit[2]`
 
 (see fit_polynomial function )
 
