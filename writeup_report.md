@@ -166,7 +166,6 @@ Once you have selected the lines, it is reasonable to assume that the lines will
  Now let's calculate the radius of curvature and the car offset.
 The radius of curvature is computed according to the formula and method described in the classroom material. 
 
-   `def curvature_radius (leftx, rightx, img_shape, xm_per_pix=3.7/800, ym_per_pix = 25/720):
     ploty = np.linspace(0, img_shape[0] - 1, img_shape[0])
     
     leftx = leftx[::-1]  # Reverse to match top-to-bottom in y
@@ -190,9 +189,6 @@ The radius of curvature is computed according to the formula and method describe
     # Calculate the new radii of curvature
     left_curverad = ((1 + (2*left_fit_cr[0]*y_eval*ym_per_pix + left_fit_cr[1])**2)**1.5) / np.absolute(2*left_fit_cr[0])
     right_curverad = ((1 + (2*right_fit_cr[0]*y_eval*ym_per_pix + right_fit_cr[1])**2)**1.5) / np.absolute(2*right_fit_cr[0])
-    
-    # Now our radius of curvature is in meters
-    return (left_curverad, right_curverad)`
 
 
 
