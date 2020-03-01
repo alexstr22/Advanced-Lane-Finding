@@ -35,7 +35,7 @@ The code for this step is contained in the first code cell of the IPython notebo
 [image11]: ./report_img/Lane_detected.png "Lane_detected"
 [image12]: ./report_img/Lane_detected_with_metrics.png "Lane_detected_with_metrics"
 
-[video1]: ./report_img/Undistorted.png
+[video1]: './project_video_solution.mp4'
 
 ---
 
@@ -220,7 +220,7 @@ Use openCV function cv2.putText.
 
 #### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (wobbly lines are ok but no catastrophic failures that would cause the car to drive off the road!).
 
-Here's a [link to my video result](./project_video_solution.mp4)
+Here's a [video1](./project_video_solution.mp4)
 
 ---
 
