@@ -6,10 +6,9 @@ git pull
 echo
 
 # Ask the user for login details
-read -p 'Git repository url: ' github.com/alexstr22/Advanced-Lane-Finding-Self-Driving
-read -p 'Git Username: ' alexstr22
-read -p 'Git email: ' alexstr22@gmail.com
-
+read -p 'Git repository url: ' upstreamVar
+read -p 'Git Username: ' userVar
+read -p 'Git email: ' emailVar
 echo
 echo Thank you $userVar!, we now have your credentials
 echo for upstream $upstreamVar. You must supply your password for each push.
