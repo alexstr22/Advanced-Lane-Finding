@@ -45,10 +45,10 @@ The code for this step is contained in the first code cell of the IPython notebo
 ---
 ### Import packages
 
-*OpenCV - an open source computer vision library,
-*Matplotbib - a python 2D plotting libray,
-*Numpy - a package for scientific computing with Python,
-*MoviePy - a Python module for video editing.
+* OpenCV - an open source computer vision library,
+* Matplotbib - a python 2D plotting libray,
+* Numpy - a package for scientific computing with Python,
+* MoviePy - a Python module for video editing.
 
 
 ### Step 1: Camera Calibration
@@ -202,7 +202,6 @@ Use openCV function cv2.putText.
 
 ![alt text][image12]
 
-
 ---
 
 ### Pipeline (video)
@@ -216,6 +215,6 @@ Here's a [video1](./project_video_solution.mp4)
 ### Discussion
 
 Ideas for improvement
-*More accurate selection of filter hyperparameters
-*I think can work on improving the function - "search_around_poly"
-*Apply neural networks ( I looked into the next lesson :) )
+* More accurate selection of filter hyperparameters
+* I think can work on improving the function - "search_around_poly"
+* Apply neural networks ( I looked into the next lesson :) )
