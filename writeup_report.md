@@ -206,7 +206,8 @@ Use openCV function cv2.putText.
 
 ### Pipeline (video)
 
-For this task, i developed simple class, because class more flexible. that class include all functions what i descripted above.
+For this task, i developed simple class, because class more flexible. that class include all functions what i described above.
+
 
         img = cv2.undistort(img, mtx, dist, None, mtx)
 
