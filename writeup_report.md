@@ -27,11 +27,11 @@ The code for this step is contained in the first code cell of the IPython notebo
 [image1]: ./report_img/Undistorted_image.png "Undistorted"
 [image2]: ./report_img/Thresholded_gradient_orient_x.png "gradient_orient_x"
 [image3]: ./report_img/Thresholded_gradient_orient_y.png "gradient_orient_y"
-[image4]: ./report_img/Thresholded_magnitude.pngndistorted.png "Thresholded_magnitude"
+[image4]: ./report_img/Thresholded_magnitude.png "Thresholded_magnitude"
 [image5]: ./report_img/Thresholded_gradient_direction.png  "Thresholded_gradient_direction"
 [image6]: ./report_img/Color_thresholded.png "Color_thresholded"
 [image7]: ./report_img/Thresholds_combined.png "Thresholds_combined"
-[image8]: ./report_img/Birds-eye.png "birds-eye"
+[image8]: ./report_img/birds-eye.png "birds-eye"
 [image9]: ./report_img/Histogram.png "Histogram"
 [image10]: ./report_img/Lane_lines_detected.png "Lane_lines_detected"
 [image11]: ./report_img/Lane_detected.png "Lane_detected"
@@ -41,19 +41,17 @@ The code for this step is contained in the first code cell of the IPython notebo
 
 ---
 
-
 ## Pipeline (image)
 ---
 ### Import packages
 
-OpenCV - an open source computer vision library,
-Matplotbib - a python 2D plotting libray,
-Numpy - a package for scientific computing with Python,
-MoviePy - a Python module for video editing.
+*OpenCV - an open source computer vision library,
+*Matplotbib - a python 2D plotting libray,
+*Numpy - a package for scientific computing with Python,
+*MoviePy - a Python module for video editing.
 
 
 ### Step 1: Camera Calibration
-
 
 The next step is to calibrate the camera. A set of chess images will be used for this.
 
@@ -76,7 +74,6 @@ The complete code for this step can be found in the Advanced_Lane_Finding.ipynb 
 In this step we use undistor function from opencv - cv2.undistort(img, mtx, dist, None, mtx)
 
 Below you can see a result on chessboard images
-
 ![alt text][image1]
 
 ### Step 3: Use color transforms, gradients, etc., to create a thresholded binary image.
@@ -145,12 +142,12 @@ The first step: plot the histogram as a starting point for determining where the
 (see find_lane_pixels function)
 Finally, usign the coordinates previously calculated, a second order polynomial is calculated for both the left and right lane line. 
 Fit a second order polynomial to each using `np.polyfit`
-`<
-left_fit = np.polyfit(lefty, leftx, 2)
-right_fit = np.polyfit(righty, rightx, 2)
-ploty = np.linspace(0, binary_warped.shape[0]-1, binary_warped.shape[0] )
-left_fitx = left_fit[0]*ploty^2 + left_fit[1]*ploty + left_fit[2]
-right_fitx = right_fit[0]*ploty^2 + right_fit[1]*ploty + right_fit[2] >`
+
+    `left_fit = np.polyfit(lefty, leftx, 2)
+     right_fit = np.polyfit(righty, rightx, 2)
+     ploty = np.linspace(0, binary_warped.shape[0]-1, binary_warped.shape[0] )
+     left_fitx = left_fit[0]*ploty^2 + left_fit[1]*ploty + left_fit[2]
+     right_fitx = right_fit[0]*ploty^2 + right_fit[1]*ploty + right_fit[2]`
 
 (see fit_polynomial function )
 
@@ -162,15 +159,11 @@ Once you have selected the lines, it is reasonable to assume that the lines will
 ![alt text][image10]
 
 
-
 #### Step 6: Determine the curvature of the lane and vehicle position with respect to center
-
 
  Now let's calculate the radius of curvature and the car offset.
 The radius of curvature is computed according to the formula and method described in the classroom material. 
 
-`< 
-def curvature_radius (leftx, rightx, img_shape, xm_per_pix=3.7/800, ym_per_pix = 25/720):
     ploty = np.linspace(0, img_shape[0] - 1, img_shape[0])
     
     leftx = leftx[::-1]  # Reverse to match top-to-bottom in y
@@ -194,12 +187,6 @@ def curvature_radius (leftx, rightx, img_shape, xm_per_pix=3.7/800, ym_per_pix =
     # Calculate the new radii of curvature
     left_curverad = ((1 + (2*left_fit_cr[0]*y_eval*ym_per_pix + left_fit_cr[1])**2)**1.5) / np.absolute(2*left_fit_cr[0])
     right_curverad = ((1 + (2*right_fit_cr[0]*y_eval*ym_per_pix + right_fit_cr[1])**2)**1.5) / np.absolute(2*right_fit_cr[0])
-    
-    # Now our radius of curvature is in meters
-    return (left_curverad, right_curverad) 
->`
-
-
 
 
 #### Step 7:Warp the detected lane boundaries back onto the original image
