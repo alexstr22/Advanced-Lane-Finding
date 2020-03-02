@@ -206,9 +206,52 @@ Use openCV function cv2.putText.
 
 ### Pipeline (video)
 
-#### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (wobbly lines are ok but no catastrophic failures that would cause the car to drive off the road!).
+For this task, i developed simple class, because class more flexible. that class include all functions what i descripted above.
 
-Here's a [video1](./project_video_solution.mp4)
+        img = cv2.undistort(img, mtx, dist, None, mtx)
+
+        # Calculate directional gradient
+        grad_binary_x = abs_sobel_thresh(img, orient='x', thresh_min=20, thresh_max=80)
+        grad_binary_y = abs_sobel_thresh(img, orient='y', thresh_min=20, thresh_max=80)
+
+        # Calculate gradient magnitude 
+        mag_binary = mag_thresh(img, sobel_kernel=15, mag_thresh=(70, 100))
+
+        # Calculate gradient direction
+        dir_binary = dir_threshold(img, sobel_kernel=15, thresh=(0.7, 1.2))
+
+        # Calculate color threshold
+        col_binary = col_threshold(img, thresh=(170, 255))
+
+        # Combine all the thresholds to identify the lane lines
+        combined = combine_thresholds(grad_binary_x, grad_binary_y, mag_binary, dir_binary, col_binary, ksize=20)
+
+
+        # Apply a perspective transform to rectify binary image ("birds-eye view")
+        src_coordinates = np.float32(
+            [[280,  700],  # Bottom left
+             [595,  460],  # Top left
+             [725,  460],  # Top right
+             [1125, 700]]) # Bottom right
+        
+        dst_coordinates = np.float32(
+            [[250,  720],  # Bottom left
+             [250,    0],  # Top left
+             [1065,   0],  # Top right
+             [1065, 720]]) # Bottom right  
+
+        combined_warped, _, Minv = warp(combined, src_coordinates, dst_coordinates)
+        
+        
+       self.leftx, self.lefty, self.rightx, self.righty,left_fitx, right_fitx, ploty, result= SimilarLines(combined_warped,self.leftx,self.lefty,self.rightx,self.righty)
+                        
+        img_lane = draw_lane(img, combined_warped, left_fitx, right_fitx,ploty, Minv)
+            
+        out_img = display_metrics(img_lane, leftx=left_fitx, rightx=right_fitx)
+
+
+
+The output video can be found [here](https://github.com/alexstr22/Advanced-Lane-Finding-Self-Driving/project_video_solution.mp4)
 
 ---
 
