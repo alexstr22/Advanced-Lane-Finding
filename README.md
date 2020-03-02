@@ -228,9 +228,7 @@ Here's a [video1](./project_video_solution.mp4)
 
 ### Discussion
 
-Ideas for improvement:
+Ideas for improvement
 *More accurate selection of filter hyperparameters
 *I think can work on improving the function - "search_around_poly"
 *Apply neural networks ( I looked into the next lesson :) )
-
-

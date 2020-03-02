@@ -1,8 +1,10 @@
 # Self-Driving Car Engineer Nanodegree
 ---
 ## Advanced lane finding
----
 
+![png](./report_img/Lane_detected_with_metrics.png)
+
+---
 ### Steps
 #### My pipeline consisted od 10 steps:
 
